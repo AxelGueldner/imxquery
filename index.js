@@ -208,16 +208,33 @@
   };
   
   var documentReady = function(callback){
+
+    let checkLess = false;
+    if(less){
+      if(typeof(less.pageLoadFinished) === 'object'){
+        checkLess = true;
+      }
+    }
     
+    var lessComplete = function(){
+      if(checkLess){
+        less.pageLoadFinished.then(
+          () => { setTimeout(callback);}
+        );
+      }else{
+        setTimeout(callback);
+      }
+    };
+
     var loadComplete = function(){
       document.removeEventListener('DOMContentLoaded', loadComplete);
       window.removeEventListener('load', loadComplete);
-      
-      setTimeout(callback);
+
+      lessComplete();
     };
   
     if(document.readyState === 'complete'){
-      setTimeout(callback);
+      lessComplete();
     }else{
       document.addEventListener('DOMContentLoaded', loadComplete);
       window.addEventListener('load', loadComplete);
