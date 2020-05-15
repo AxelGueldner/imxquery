@@ -210,7 +210,7 @@
   var documentReady = function(callback){
 
     let checkLess = false;
-    if(less){
+    if(typeof(less) !== 'undefined'){
       if(typeof(less.pageLoadFinished) === 'object'){
         checkLess = true;
       }
