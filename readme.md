@@ -12,14 +12,9 @@ Currently there is only one way to install the CSS3Slider, using NPM:
 ```
 $ npm install imxquery
 ```
-After this you can either simply require imxQuery:
+After this you can simply require imxQuery:
 ```javascript
 var imxQuery = require('imxquery');
-```
-
-or simply include it via script tag:
-```javascript
-<script type="text/javascript" src="node_modules/imxQuery/index.js"></script>
 ```
 
 ## Accessing imxQuery
